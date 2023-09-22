@@ -5,3 +5,48 @@
 .headings {
     color: rebeccapurple
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid bisque;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header img {
+    width: 100px;
+    height: 100px;
+}
+
+.header ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.header ul li {
+    text-decoration: none;
+    padding: 0px 30px;
+}
+.container .cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.res-card img{
+    width: 200px;
+   
+}
+
+.res-card {
+    min-height: 200px;
+    width: fit-content;
+    background-color: bisque;
+    padding: 10px;
+    margin: 20px 10px;
+    border: 1px solid transparent;
+}
+
+.res-card:hover {
+    border:1px solid royalblue;
+}

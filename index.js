@@ -1,82 +1,84 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const rawReactElement = React.createElement(
-  "h1",
-  { id: "heading" },
-  "Raw React Element"
-);
+// food ordering app (reference from swiggy app)
 
-//JSX and different , JSX is sugar syntax for JS which is not necessary for react
-const JSXelement = <h1 className="className">JSX element</h1>;
-// Proof that JSX is not HTML is the attribute we pass in JSX -> className not class, tabIndex not tabindex
-// JSX is not html inside javascript, JSX is HTML or XML like syntax
-// (JSX) like syntax it looks html but it is not HTML
-// JSX is not valid JS because browser cant undeerstand it directly
-// JSX also handles cross site scripting which is type of an attack on api to make response the mallicious
+// steps
+// 1. planing , if planing is good code creation is easy
+// 2. make wireframe
+// 3. list down the components we have to make (reusable and non-reusable)
 
-const FunctionalComponent = () => {
+// component list
+// 1. header navigator
+// 2. Body comp
+//     - card component inside body component
+//         -img and info
+// 3. footer (copyright links)
+
+const Header = () => {
   return (
-    <div>
-      {JSXelement}
-      {rawReactElement}
+    <div className="header">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqgqV9sezgYxiiPqaJ3NXXvwDbkzgXpCeBWQ&usqp=CAU" />
+      <div>
+        <ul>
+          <li>Home</li>
+          <li>contact</li>
+          <li>about</li>
+        </ul>
+      </div>
     </div>
   );
 };
 
-const elementWhichHaveFunctionalComp = (
-  <div>
-    element which have func comp
-    <FunctionalComponent />
-  </div>
-);
+const styleCard = {
+  borderRadius: "10px",
+};
 
-const SecondFuntionComponent = () => {
-  const anyNumber = 1000;
+const Card = () => {
   return (
-    <div>
-      <FunctionalComponent />
-      {elementWhichHaveFunctionalComp}
-      <h1>component for component composition</h1>
-      {anyNumber} {/* {} <- this is ternary */}
-      {console.log(
-        "any JS code can run under ternary brackets even console.log"
-      )}
-      {/* this is component composition */}
-      {/* component composition is basically component used inside another component it can be also component passed as PROP */}
+    <div className="res-card" style={styleCard}>
+      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/o5hs7dy6iwtkl8ugfmtn" />
+      <h3>MCD</h3>
+      <p> food </p>
+      <p>cuisine</p>
+      <p>rating</p>
     </div>
   );
 };
 
-{
-  {
-    {
-      // testing bracket pair colorization
-    }
-  }
-}
+const Body = () => {
+  return (
+    <div className="container">
+      <input type="text" placeholder="Search Places" />
+      <div className="cards">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </div>
+  );
+};
 
-const ThirdFunctionComponent = () => SecondFuntionComponent();
+const Footer = () => {
+  return <div>Footer</div>;
+};
 
-// parcel(our installed bundler) is uses babel to transpile the JSX element to normal JS before it reaches the JS Engine
-// babel transpile JSX before render
-// babel is package which is currently transitive dependency
-// babel is not a library
-// babel helps in older browser runs too
-// babel also does many thing apart from this
+const AppLayout = () => {
+  return (
+    <div>
+      <Header />
+      <Body />
+      <Footer />
+    </div>
+  );
+};
 
 const Root = ReactDOM.createRoot(document.getElementById("root"));
 
-// babel jobs steps (babel is super hero of browser bro)
-// JSX -> React.createElement -> JS object -> rendered to make html element
-
-Root.render(<ThirdFunctionComponent />);
-
-// Root.render(ThirdFunctionComponent);
-// above example is for wrong rendering since Functional component have to be sent in HTML like syntax
-
-console.log(
-  JSXelement,
-  rawReactElement,
-  " <- both JSX element & react element return JS object and not html tag"
-);
+Root.render(<AppLayout />);
