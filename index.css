@@ -35,12 +35,15 @@
 
 .res-card img{
     width: 200px;
-   
+    height: 200px;
+    border-radius: 10px;
+    border: 3px solid snow;
 }
 
 .res-card {
-    min-height: 200px;
-    width: fit-content;
+    height: 400px;
+    width: 210px;
+    overflow: hidden;
     background-color: bisque;
     padding: 10px;
     margin: 20px 10px;
@@ -48,5 +51,5 @@
 }
 
 .res-card:hover {
-    border:1px solid royalblue;
+    border:1px solid rgb(253, 166, 58);
 }
